@@ -1,0 +1,197 @@
+# All elements in this file should depend on the docker-compose-base.yaml
+# Provided fabric peer node
+
+version: '2'
+
+services:
+  peer0.org2.example.com:
+    container_name: peer0.org2.example.com
+    hostname: peer0.org2.example.com
+    image: hyperledger/fabric-peer
+    environment:
+       - CORE_PEER_ID=peer0.org2.example.com
+       - CORE_PEER_ADDRESS=peer0.org2.example.com:7051
+       - CORE_PEER_CHAINCODELISTENADDRESS=peer0.org2.example.com:7052
+       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.example.com:7051
+       - CORE_PEER_LOCALMSPID=OrgMSP
+       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+       # the following setting starts chaincode containers on the same
+       # bridge network as the peers
+       # https://docs.docker.com/compose/networking/
+       #- CORE_LOGGING_LEVEL=ERROR
+       - CORE_LOGGING_LEVEL=DEBUG
+       - CORE_PEER_GOSSIP_USELEADERELECTION=true
+       - CORE_PEER_GOSSIP_ORGLEADER=false
+       - CORE_PEER_PROFILE_ENABLED=true
+       - CORE_PEER_TLS_ENABLED=true
+       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    volumes:
+       - /var/run/:/host/var/run/
+       - ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/etc/hyperledger/fabric/msp
+       - ./crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/etc/hyperledger/fabric/tls
+    ports:
+      - 7051:7051
+      - 7052:7052
+      - 7053:7053
+    extra_hosts:
+      - "orderer0.example.com:172.32.0.37"
+      - "orderer1.example.com:172.32.0.37"
+      - "orderer2.example.com:172.32.0.37"
+      - "orderer3.example.com:172.32.0.37"
+      - "orderer4.example.com:172.32.0.37"
+      - "orderer5.example.com:172.32.0.37"
+      - "orderer6.example.com:172.32.0.37"
+      - "orderer7.example.com:172.32.0.37"
+      - "orderer8.example.com:172.32.0.37"
+      - "orderer9.example.com:172.32.0.37"
+      - "orderer10.example.com:172.32.0.37"
+      - "orderer11.example.com:172.32.0.37"
+      - "orderer12.example.com:172.32.0.37"
+      - "orderer13.example.com:172.32.0.37"
+      - "orderer14.example.com:172.32.0.37"
+      - "orderer15.example.com:172.32.0.37"
+      - "orderer16.example.com:172.32.0.38"
+      - "orderer17.example.com:172.32.0.38"
+      - "orderer18.example.com:172.32.0.38"
+      - "orderer19.example.com:172.32.0.38"
+      - "orderer20.example.com:172.32.0.38"
+      - "orderer21.example.com:172.32.0.38"
+      - "orderer22.example.com:172.32.0.38"
+      - "orderer23.example.com:172.32.0.38"
+      - "orderer24.example.com:172.32.0.38"
+      - "orderer25.example.com:172.32.0.38"
+      - "orderer26.example.com:172.32.0.38"
+      - "orderer27.example.com:172.32.0.38"
+      - "orderer28.example.com:172.32.0.38"
+      - "orderer29.example.com:172.32.0.38"
+      - "orderer30.example.com:172.32.0.38"
+      - "orderer31.example.com:172.32.0.38"
+      - "orderer32.example.com:172.32.0.39"
+      - "orderer33.example.com:172.32.0.39"
+      - "orderer34.example.com:172.32.0.39"
+      - "orderer35.example.com:172.32.0.39"
+      - "orderer36.example.com:172.32.0.39"
+      - "orderer37.example.com:172.32.0.39"
+      - "orderer38.example.com:172.32.0.39"
+      - "orderer39.example.com:172.32.0.39"
+      - "orderer40.example.com:172.32.0.39"
+      - "orderer41.example.com:172.32.0.39"
+      - "orderer42.example.com:172.32.0.39"
+      - "orderer43.example.com:172.32.0.39"
+      - "orderer44.example.com:172.32.0.39"
+      - "orderer45.example.com:172.32.0.39"
+      - "orderer46.example.com:172.32.0.39"
+      - "orderer47.example.com:172.32.0.39"
+      - "orderer48.example.com:172.32.0.40"
+      - "orderer49.example.com:172.32.0.40"
+      - "orderer50.example.com:172.32.0.40"
+      - "orderer51.example.com:172.32.0.40"
+      - "orderer52.example.com:172.32.0.40"
+      - "orderer53.example.com:172.32.0.40"
+      - "orderer54.example.com:172.32.0.40"
+      - "orderer55.example.com:172.32.0.40"
+      - "orderer56.example.com:172.32.0.40"
+      - "orderer57.example.com:172.32.0.40"
+      - "orderer58.example.com:172.32.0.40"
+      - "orderer59.example.com:172.32.0.40"
+      - "orderer60.example.com:172.32.0.40"
+      - "orderer61.example.com:172.32.0.40"
+      - "orderer62.example.com:172.32.0.40"
+      - "orderer63.example.com:172.32.0.40"
+
+  cli:
+    container_name: cli
+    image: hyperledger/fabric-tools
+    tty: true
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # - CORE_LOGGING_LEVEL=ERROR
+      - CORE_LOGGING_LEVEL=DEBUG
+      - CORE_PEER_ID=cli
+      - CORE_PEER_ADDRESS=peer0.org2.example.com:7051
+      - CORE_PEER_LOCALMSPID=OrgMSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./chaincode/go/:/opt/gopath/src/github.com/hyperledger/fabric/kafkapeer/chaincode/go
+        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+    extra_hosts:
+      - "orderer0.example.com:172.32.0.37"
+      - "orderer1.example.com:172.32.0.37"
+      - "orderer2.example.com:172.32.0.37"
+      - "orderer3.example.com:172.32.0.37"
+      - "orderer4.example.com:172.32.0.37"
+      - "orderer5.example.com:172.32.0.37"
+      - "orderer6.example.com:172.32.0.37"
+      - "orderer7.example.com:172.32.0.37"
+      - "orderer8.example.com:172.32.0.37"
+      - "orderer9.example.com:172.32.0.37"
+      - "orderer10.example.com:172.32.0.37"
+      - "orderer11.example.com:172.32.0.37"
+      - "orderer12.example.com:172.32.0.37"
+      - "orderer13.example.com:172.32.0.37"
+      - "orderer14.example.com:172.32.0.37"
+      - "orderer15.example.com:172.32.0.37"
+      - "orderer16.example.com:172.32.0.38"
+      - "orderer17.example.com:172.32.0.38"
+      - "orderer18.example.com:172.32.0.38"
+      - "orderer19.example.com:172.32.0.38"
+      - "orderer20.example.com:172.32.0.38"
+      - "orderer21.example.com:172.32.0.38"
+      - "orderer22.example.com:172.32.0.38"
+      - "orderer23.example.com:172.32.0.38"
+      - "orderer24.example.com:172.32.0.38"
+      - "orderer25.example.com:172.32.0.38"
+      - "orderer26.example.com:172.32.0.38"
+      - "orderer27.example.com:172.32.0.38"
+      - "orderer28.example.com:172.32.0.38"
+      - "orderer29.example.com:172.32.0.38"
+      - "orderer30.example.com:172.32.0.38"
+      - "orderer31.example.com:172.32.0.38"
+      - "orderer32.example.com:172.32.0.39"
+      - "orderer33.example.com:172.32.0.39"
+      - "orderer34.example.com:172.32.0.39"
+      - "orderer35.example.com:172.32.0.39"
+      - "orderer36.example.com:172.32.0.39"
+      - "orderer37.example.com:172.32.0.39"
+      - "orderer38.example.com:172.32.0.39"
+      - "orderer39.example.com:172.32.0.39"
+      - "orderer40.example.com:172.32.0.39"
+      - "orderer41.example.com:172.32.0.39"
+      - "orderer42.example.com:172.32.0.39"
+      - "orderer43.example.com:172.32.0.39"
+      - "orderer44.example.com:172.32.0.39"
+      - "orderer45.example.com:172.32.0.39"
+      - "orderer46.example.com:172.32.0.39"
+      - "orderer47.example.com:172.32.0.39"
+      - "orderer48.example.com:172.32.0.40"
+      - "orderer49.example.com:172.32.0.40"
+      - "orderer50.example.com:172.32.0.40"
+      - "orderer51.example.com:172.32.0.40"
+      - "orderer52.example.com:172.32.0.40"
+      - "orderer53.example.com:172.32.0.40"
+      - "orderer54.example.com:172.32.0.40"
+      - "orderer55.example.com:172.32.0.40"
+      - "orderer56.example.com:172.32.0.40"
+      - "orderer57.example.com:172.32.0.40"
+      - "orderer58.example.com:172.32.0.40"
+      - "orderer59.example.com:172.32.0.40"
+      - "orderer60.example.com:172.32.0.40"
+      - "orderer61.example.com:172.32.0.40"
+      - "orderer62.example.com:172.32.0.40"
+      - "orderer63.example.com:172.32.0.40"
+      - "peer0.org1.example.com:172.32.0.40"
+      - "peer1.org1.example.com:172.32.0.40"
+      - "peer0.org2.example.com:172.32.0.39" 
+      - "peer1.org2.example.com:172.32.0.39"
