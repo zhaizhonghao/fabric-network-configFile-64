@@ -289,69 +289,9 @@ Orderer: &OrdererDefaults
         # NOTE: Use IP:port notation.
         Brokers:
             - kafka0:9092
-            - kafka1:10092
-            - kafka2:11092
-            - kafka3:12092
-            - kafka4:13092
-            - kafka5:14092
-            - kafka6:15092
-            - kafka7:16092
-            - kafka8:17092
-            - kafka9:18092
-            - kafka10:19092
-            - kafka11:20092
-            - kafka12:21092
-            - kafka13:22092
-            - kafka14:23092
-            - kafka15:24092  
-            - kafka16:9092
-            - kafka17:10092
-            - kafka18:11092
-            - kafka19:12092
-            - kafka20:13092
-            - kafka21:14092
-            - kafka22:15092
-            - kafka23:16092
-            - kafka24:17092
-            - kafka25:18092
-            - kafka26:19092
-            - kafka27:20092
-            - kafka28:21092
-            - kafka29:22092
-            - kafka30:23092
-            - kafka31:24092  
-            - kafka32:9092
-            - kafka33:10092
-            - kafka34:11092
-            - kafka35:12092
-            - kafka36:13092
-            - kafka37:14092
-            - kafka38:15092
-            - kafka39:16092
-            - kafka40:17092
-            - kafka41:18092
-            - kafka42:19092
-            - kafka43:20092
-            - kafka44:21092
-            - kafka45:22092
-            - kafka46:23092
-            - kafka47:24092  
-            - kafka48:9092
-            - kafka49:10092
-            - kafka50:11092
-            - kafka51:12092
-            - kafka52:13092
-            - kafka53:14092
-            - kafka54:15092
-            - kafka55:16092
-            - kafka56:17092
-            - kafka57:18092
-            - kafka58:19092
-            - kafka59:20092
-            - kafka60:21092
-            - kafka61:22092
-            - kafka62:23092
-            - kafka63:24092            
+            - kafka1:9092
+            - kafka2:9092
+            - kafka3:9092      
     # Organizations is the list of orgs which are defined as participants on
     # the orderer side of the network
     Organizations:
